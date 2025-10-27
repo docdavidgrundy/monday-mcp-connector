@@ -1,9 +1,9 @@
 // api/oauth/start.js
-// Redirects the user to monday.com's OAuth screen.
-
 export default async function handler(req, res) {
   const clientId = process.env.MONDAY_CLIENT_ID;
-  const redirectUri = process.env.MONDAY_REDIRECT_URI; // MUST equal your Vercel URL below
+  const redirectUri = process.env.MONDAY_REDIRECT_URI;
+
+  // SPACE-separated scopes (not commas)
   const scopes = [
     "boards:read",
     "boards:write",
@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     "items:write",
     "workspaces:read",
     "users:read",
-  ].join(",");
+  ].join(" ");  // <-- space here
 
   const authUrl =
     `https://auth.monday.com/oauth2/authorize?client_id=${encodeURIComponent(clientId)}` +
