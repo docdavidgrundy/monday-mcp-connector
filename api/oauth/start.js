@@ -3,8 +3,7 @@
 
 export default async function handler(req, res) {
   const clientId = process.env.MONDAY_CLIENT_ID;
-  const redirectUri = process.env.MONDAY_REDIRECT_URI; // e.g. https://monday-mcp-connector.vercel.app/api/oauth/callback
-
+  const redirectUri = process.env.MONDAY_REDIRECT_URI; // MUST equal your Vercel URL below
   const scopes = [
     "boards:read",
     "boards:write",
