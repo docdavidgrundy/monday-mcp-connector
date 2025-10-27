@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       client_id: process.env.MONDAY_CLIENT_ID,
       client_secret: process.env.MONDAY_CLIENT_SECRET,
       code,
-      redirect_uri: process.env.MONDAY_REDIRECT_URI,
+      redirect_uri: process.env.MONDAY_REDIRECT_URI, // MUST match exactly
       grant_type: "authorization_code",
     });
 
@@ -30,8 +30,6 @@ export default async function handler(req, res) {
       return;
     }
 
-    // ⚠️ For a quick demo we just display the token.
-    // In a real setup you’d store it securely (DB/KV) keyed to the user/session.
     res.setHeader("Content-Type", "text/html; charset=utf-8");
     res.end(`
       <h2>✅ Connected to monday.com</h2>
